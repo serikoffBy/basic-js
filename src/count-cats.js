@@ -4,7 +4,9 @@ module.exports = function countCats(matrix) {
   let sum = 0;
   if (matrix.length === 0) return 0;
   matrix.forEach(element => {
-      if (element.includes('^^')) sum = sum + 1; 
+      element.forEach(elementSecond => {
+        if(elementSecond === '^^') sum +=1;
+      }); 
   });
   return sum;
 };
