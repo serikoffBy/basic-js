@@ -11,5 +11,5 @@ module.exports = function countCats(matrix) {
         if (element.includes('^^')) sum = sum + 1;
     }
   });
-  //return sum;
+  return sum;
 };
