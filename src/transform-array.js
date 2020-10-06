@@ -1,44 +1,47 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function transform(arr) {
-  if(!Array.isArray(arr)) throw new SyntaxError("Ошибка в данных");
-  if(arr.length === 0) return [];
   let newArray = [];
-  let helpArr = [];
-  for(let i = 0; i <= arr.length - 1; i++) {
-    switch (arr[i]) {
-      case '--discard-next': {
-        if(i === arr.length-1) {
+  if(Array.isArray(arr) && arr.length !== 0) {
+    for(let i = 0; i <= arr.length - 1; i++) {
+      switch (arr[i]) {
+        case '--discard-next': {
+          if(i === arr.length-1) {
+            break;
+          } 
+          i++;
           break;
-        } 
-        i++;
-        break;
-      }
-      case '--discard-prev': {
-        if(i === 0) break;
-        if(helpArr[helpArr.length - 1] === arr[i - 1]) {
-          helpArr.splice(helpArr.length-1, helpArr.length-1);
         }
-        break;
-      }
-      case '--double-next': {
-        if(i === arr.length-1) break;
-        helpArr.push(arr[i + 1]);
-        break;
-      }
-      case '--double-prev': {
-        if(i === 0) break;
-        if(helpArr[helpArr.length - 1] === arr[i - 1]) {
-          helpArr.push(arr[i - 1]);
+        case '--discard-prev': {
+          if(i === 0) break;
+          if(newArray[newArray.length - 1] === arr[i - 1]) {
+            newArray.splice(newArray.length-1, newArray.length-1);
+          }
+          break;
         }
-        break;
+        case '--double-next': {
+          if(i === arr.length-1) break;
+          newArray.push(arr[i + 1]);
+          break;
+        }
+        case '--double-prev': {
+          if(i === 0) break;
+          if(newArray[newArray.length - 1] === arr[i - 1]) {
+            newArray.push(arr[i - 1]);
+          }
+          break;
+        }
+        default: {
+          newArray.push(arr[i]);
+          break;
+        }
       }
-      default: {
-        helpArr.push(arr[i]);
-
-        break;
-      }
+    }  
+  }
+  else {
+    if(!arr) {
+      throw new Error('Not Array');
     }
   }
-return helpArr;
+return newArray;
 };
