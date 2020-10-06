@@ -2,7 +2,7 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function transform(arr) {
   let newArray = [];
-  if(Array.isArray(arr) && arr.length !== 0) {
+  if(Array.isArray(arr) && arr.length > 0) {
     for(let i = 0; i <= arr.length - 1; i++) {
       switch (arr[i]) {
         case '--discard-next': {
