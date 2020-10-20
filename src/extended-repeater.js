@@ -7,6 +7,7 @@ module.exports = function repeater(str, options) {
   objOptions.additionSeparator = options.additionSeparator || '|';
   objOptions.repeatTimes = options.repeatTimes || 1;
   objOptions.additionRepeatTimes = options.additionRepeatTimes || 1;
+  objOptions.addition = options.addition || String(options.addition);
   
 
   let strRepeatArray = [];
