@@ -18,6 +18,6 @@ module.exports = function repeater(str, options) {
   }
   let additionStr = additionArray.join(objOptions.additionSeparator);
 
-  return strRepeatArray.join(additionStr + objOptions.separator) + objOptions.addition;
+  return strRepeatArray.join(additionStr + objOptions.separator) + additionStr;
 };
   
