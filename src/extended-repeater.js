@@ -7,8 +7,9 @@ module.exports = function repeater(str, options) {
   objOptions.additionSeparator = options.additionSeparator || '|';
   objOptions.repeatTimes = options.repeatTimes || 1;
   objOptions.additionRepeatTimes = options.additionRepeatTimes || 1;
-  objOptions.addition = options.addition || String(options.addition);
+  objOptions.addition = (options.addition === undefined) ? '' : String(options.addition);
   
+  console.log(objOptions.addition)
 
   let strRepeatArray = [];
   let additionArray = [];
@@ -20,6 +21,7 @@ module.exports = function repeater(str, options) {
   for(let i = 0; i < objOptions.additionRepeatTimes; i++) {
     additionArray[i] = objOptions.addition;
   }
+  
   let additionStr = additionArray.join(objOptions.additionSeparator);
 
   return strRepeatArray.join(additionStr + objOptions.separator) + additionStr;
