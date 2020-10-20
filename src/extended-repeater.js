@@ -5,6 +5,7 @@ module.exports = function repeater(str, options) {
   objOptions.separator =  options.separator || '+';
   objOptions.additionSeparator = options.additionSeparator || '|';
   objOptions.repeatTimes = options.repeatTimes || 1;
+  objOptions.additionRepeatTimes = options.additionRepeatTimes || 1;
 
   let strRepeatArray = [];
   let additionArray = [];
@@ -20,4 +21,3 @@ module.exports = function repeater(str, options) {
 
   return strRepeatArray.join(additionStr + objOptions.separator) + additionStr;
 };
-  
